@@ -1,0 +1,55 @@
+<div class="fixed-top">
+  <nav class="navbar navbar-light bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <a class="navbar-brand" routerLink="/">
+            <img src="../../assets/logo.png" />
+          </a>
+        </div>
+        <!-- #termoDaPesquisa é uma variável sendo passada 
+        como parâmetro para função pesquisa em keyup -->
+        <div class="col-md-6">
+
+          <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Pesquise por ofertas" 
+          #termoDaPesquisa
+          (keyup)="pesquisa(termoDaPesquisa.value)"
+          >
+
+          <ul class="list-group" style="position: absolute; z-index: 999">
+            <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+              <a [routerLink] = "['/oferta', oferta.id]" (click)="limpaPesquisa()">
+                {{oferta.titulo | descricaoReduzida: 15| uppercase}}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <a a routerLink="/ordem-compra"><img src="../../assets/carrinho.png" /></a>
+        </div>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <div class="menu">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/restaurantes">Restaurantes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/diversao">Diversão</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <img src="../../assets/banners/img_1.jpg" />
+</div>
